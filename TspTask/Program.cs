@@ -4,9 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        var list = new List<Point> {new Point(0,0,0), new Point(4,0,0), new Point(2,3,0)};
+        var list = new List<Point> {new Point(0,0,0), new Point(0,1,0), new Point(1,1,0), new Point(1,0,0)};
         var gr = new EGraph(list);
-        var pairs = EGraph.GetPairs(gr);
+        var test = Algo.GetMaxTsp(gr);
         Console.WriteLine(-1);
     }
 }
