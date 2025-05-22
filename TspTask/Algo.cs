@@ -11,84 +11,94 @@ public class Algo
         var l2 = Math.Sqrt(second.Item1 * second.Item1 + second.Item2 * second.Item2 + second.Item3 * second.Item3);
         return scal / (l1 * l2);
     }
-    private static List<Edge> Create(List<Edge> pairs, int n, int t)
+    
+    public static List<Edge> GetMaxTsp(EGraph gr)
     {
-        var gamma = 16.0; // Посчитано
+        var pairs = EGraph.GetPairs(gr);
+        var t = (int)Math.Ceiling(Math.Sqrt(gr.N));
+      
         pairs.Sort((x,y) => x.Cost.CompareTo(y.Cost));
-        var light = new List<Edge>();
-        var temp = pairs[0].Cost == 0 ? pairs[0] : null;
-        if(temp is not null) pairs.RemoveAt(0); 
-        var i =  0;
-        var border =  t - 2;
-        var hitches = new List<List<Edge>>();
-        foreach (var edge in pairs)
+        Edge? temp = null;
+        if (pairs[0].Cost == 0)
         {
-            if(i < border) light.Add(edge);
-            else hitches.Add(new List<Edge>{edge});
-            ++i;
+            temp = pairs[0];
+            pairs.RemoveAt(0);
         }
+        var all = CreateOrder(pairs, gr.N, t);
+        return CreateResult(all, temp);
+    }
 
-        
-        var j = n / 2 - t + 2;
-        while (j > 0)
+    private static List<Edge> CreateOrder(List<Edge> pairs, int n, int t)
+    {
+        var light = pairs.Take(t - 2).ToList();
+        var heavy = pairs.Skip(t - 2).ToList();
+
+        var hitches = heavy.Select(x => new Hitch(x)).ToList();
+        var j = n / 2 - 2 + t;
+        while (j > 1)
         {
-            for (var k = 0; k < hitches.Count - 1; ++k)
+            for (var i = 0; i < hitches.Count; ++i)
             {
-                if (GetAngel(hitches[k][^1], hitches[k + 1][0]) < (t - 32.0) / t)
+                var done = false;
+                for (var k = i + 1; k < hitches.Count; ++k)
                 {
-                    hitches[k].AddRange(hitches[k+1]);
-                    hitches.RemoveAt(k+1);
-                    break;
+                    if (GetAngel(hitches[i].Last, hitches[k].First) > (t - 16.0) / t)
+                    {
+                        done = true;
+                        hitches[i].Merge(hitches[k]);
+                        hitches.RemoveAt(k);
+                    }
+                    if(done) break;
                 }
+                if (done) break;
             }
-
             j--;
         }
 
-        var E = new List<Edge>();
         var all = new List<Edge>();
         var lInd = 0;
-        foreach (var t1 in hitches)
+        foreach (var hitch in hitches)
         {
-            all.AddRange(t1);
-            if (lInd < light.Count)
+            all.AddRange(hitch.Edges);
+            if (light.Count != lInd)
             {
                 all.Add(light[lInd]);
                 lInd++;
             }
         }
-        // TODO : ДВАЖДЫ УЧИТЫВАЕТ РЕБРО ДЛЯ КВАДРАТА
-        foreach (var edge in all)
+
+        return all;
+    }
+
+    private static List<Edge> CreateResult(List<Edge> all, Edge? temp)
+    {
+        var result = new List<Edge>();
+        if(temp is null)
+            result.Add(all[0]);
+        else
         {
-            if(E.Count == 0) {E.Add(edge); continue;}
-            var str = Point.GetDistance(E[^1].First, edge.First) + Point.GetDistance(E[^1].Second, edge.Second);
-            var cross = Point.GetDistance(E[^1].First, edge.Second) + Point.GetDistance(E[^1].Second, edge.First);
-            if (str > cross)
+            var p = temp.First;
+            result.Add(new Edge(p, all[0].First));
+            result.Add(new Edge(p, all[0].Second));
+        }
+        for (var i = 0; i < all.Count - 1; ++i)
+        {
+            var curr = all[i];
+            var next = all[i + 1];
+            var straight = Point.GetDistance(curr.First, next.First) + Point.GetDistance(curr.Second, next.Second);
+            var cross = Point.GetDistance(curr.First, next.Second) + Point.GetDistance(curr.Second, next.First);
+            if (straight > cross)
             {
-                E.Add(new Edge(E[^1].First, edge.First, Point.GetDistance(E[^1].First, edge.First)));
-                E.Add(new Edge(E[^1].Second, edge.Second,Point.GetDistance(E[^1].Second, edge.Second) ));
+                result.Add(new Edge(curr.First,next.First));
+                result.Add(new Edge(curr.Second, next.Second));
             }
             else
             {
-                E.Add(new Edge(E[^1].First, edge.Second, Point.GetDistance(E[^1].First, edge.Second)));
-                E.Add(new Edge(E[^1].Second, edge.First,Point.GetDistance(E[^1].Second, edge.First) ));
+                result.Add(new Edge(curr.First, next.Second));
+                result.Add(new Edge(curr.Second,next.First));
             }
         }
-        E.Add(all[^1]);
-        if (temp is not null)
-        {
-            E.RemoveAt(0);
-            E.Add(new Edge(temp.First, all[0].First, Point.GetDistance(temp.First, all[0].First)));
-            E.Add(new Edge(temp.First, all[0].Second, Point.GetDistance(temp.First, all[0].Second)));
-        }
-
-        return E;
-    }
-
-    public static List<Edge> GetMaxTsp(EGraph gr)
-    {
-        var pairs = EGraph.GetPairs(gr);
-        var t = (int)Math.Ceiling(Math.Sqrt(gr.N));
-        return Create(pairs, gr.N, t);
+        result.Add(all[^1]);
+        return result;
     }
 }

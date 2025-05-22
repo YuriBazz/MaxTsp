@@ -17,4 +17,11 @@ public class Edge
         _second = second;
         _cost = cost;
     }
+
+    public Edge(Point p1, Point p2)
+    {
+        _first = p1;
+        _second = p2;
+        _cost = Point.GetDistance(p1, p2);
+    }
 }
