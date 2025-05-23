@@ -42,7 +42,7 @@ public class Algo
                 var done = false;
                 for (var k = i + 1; k < hitches.Count; ++k)
                 {
-                    if (GetAngel(hitches[i].Last, hitches[k].First) > (t - 16.0) / t)
+                    if (GetAngel(hitches[i].Last, hitches[k].First) > (t - 16) / t)
                     {
                         done = true;
                         hitches[i].Merge(hitches[k]);
@@ -74,7 +74,7 @@ public class Algo
     {
         var result = new List<Edge>();
         if(temp is null)
-            result.Add(all[0]);
+            result.Add(new Edge(all[0].First, all[0].Second));
         else
         {
             var p = temp.First;
@@ -85,6 +85,8 @@ public class Algo
         {
             var curr = all[i];
             var next = all[i + 1];
+            // жесткий ребилд задачи в поиск минимума
+            // бтв, так-то вроде вообще плевать, какие в результе будут веса, сборка энивей идет по упорядоченным ранее весам
             var straight = Point.GetDistance(curr.First, next.First) + Point.GetDistance(curr.Second, next.Second);
             var cross = Point.GetDistance(curr.First, next.Second) + Point.GetDistance(curr.Second, next.First);
             if (straight > cross)
@@ -98,7 +100,7 @@ public class Algo
                 result.Add(new Edge(curr.Second,next.First));
             }
         }
-        result.Add(all[^1]);
+        result.Add(new Edge(all[^1].First, all[^1].Second));
         return result;
     }
 }

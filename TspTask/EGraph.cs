@@ -6,7 +6,9 @@ public class EGraph
 {
     private readonly double[,] _weights;
     private readonly Point[] _vertexes;
+    private readonly double _max;
 
+    public double Max => _max;
     public int N => _weights.GetLength(0);
     
     public EGraph(IEnumerable<Point> enumerable)
@@ -16,9 +18,19 @@ public class EGraph
         for(var i = 0; i < _vertexes.Length; ++i)
         for (var j = i + 1; j < _vertexes.Length; ++j)
             _weights[i, j] = _weights[j,i] = GetDistance(_vertexes[i], _vertexes[j]);
+        _max = _weights.Cast<double>().Prepend(double.MinValue).Max();
+        
+        ChangeMatrix(); // Меняет задачу с максимума на минимум (наверное)
     }
-    
-    
+
+    private void ChangeMatrix()
+    {
+       
+        
+        for (var i = 0; i < _weights.GetLength(0); i++)
+        for (var j = 0; j < _weights.GetLength(1); ++j)
+            _weights[i, j] = 2 * _max - _weights[i, j];
+    }
    public static List<Edge> GetPairs(EGraph gr)
     {
         var n = gr.N;

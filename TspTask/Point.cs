@@ -2,17 +2,17 @@ namespace TspTask;
 
 public class Point
 {
-    private readonly int _x;
-    private readonly int _y;
-    private readonly int _z;
-    public int X => _x;
-    public int Y => _y;
-    public int Z => _z;
+    private readonly double _x;
+    private readonly double _y;
+    private readonly double _z;
+    public double X => _x;
+    public double Y => _y;
+    public double Z => _z;
 
     public override bool Equals(object? obj)
     {
         if (!(obj is Point point)) return false;
-        return point._x == _x && point._y == _y && point._z == _z;
+        return Math.Abs(point._x - _x) < double.Epsilon && Math.Abs(point._y - _y) < double.Epsilon && Math.Abs(point._z - _z) < double.Epsilon;
     }
     
     public override int GetHashCode()
@@ -20,7 +20,7 @@ public class Point
         return HashCode.Combine(_x, _y, _z);
     }
 
-    public Point(int x = int.MaxValue, int y = int.MaxValue, int z = int.MaxValue)
+    public Point(double x = double.MaxValue, double y = int.MaxValue, double z = int.MaxValue)
     {
         _x = x;
         _y = y;

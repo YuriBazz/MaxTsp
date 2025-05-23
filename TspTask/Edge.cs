@@ -24,4 +24,11 @@ public class Edge
         _second = p2;
         _cost = Point.GetDistance(p1, p2);
     }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(_first, _second);
+    }
+    
+    
 }
