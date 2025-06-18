@@ -6,8 +6,8 @@ namespace TspTask;
 [TestFixture]
 public class AlgoTests
 {
-    [TestCase(@"100.txt", 7910)]
-    [TestCase(@"400.txt", 15281)]
+    [TestCase(@"C:\Codding\C#_something\MaxTsp\100.txt", 7910)]
+    [TestCase(@"C:\Codding\C#_something\MaxTsp\400.txt", 15281)]
     public static void MainTest(string path, double optimal)
     {
         var list = new List<Point>();
@@ -23,6 +23,6 @@ public class AlgoTests
         var gr = new EGraph(list);
         var result = Algo.GetMaxTsp(gr);
         var cost = result.Select(x => x.Cost).Sum();
-        Console.WriteLine($"Кол-во точек: {list.Count} \n Оптималь: {optimal} \n Результат: {cost} \n Отношение: {optimal} / {cost} = {optimal / cost}");
+        Console.WriteLine($"Кол-во точек: {list.Count} \n Оптималь: {optimal} \n Результат: {cost} \n Отношение: {cost} /{optimal} = {cost / optimal}");
     }
 }

@@ -42,7 +42,7 @@ public class Algo
                 var done = false;
                 for (var k = i + 1; k < hitches.Count; ++k)
                 {
-                    if (GetAngel(hitches[i].Last, hitches[k].First) > (t - 16) / t)
+                    if (GetAngel(hitches[i].Last, hitches[k].First) > (t - 16.0) / t)
                     {
                         done = true;
                         hitches[i].Merge(hitches[k]);

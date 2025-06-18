@@ -3213,24 +3213,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Георгий\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Георгий\\source\\repos\\TspTask\\TspTask\\TspTask.csproj",
+      "projectUniqueName": "C:\\Codding\\C#_something\\MaxTsp\\TspTask\\TspTask.csproj",
       "projectName": "TspTask",
-      "projectPath": "C:\\Users\\Георгий\\source\\repos\\TspTask\\TspTask\\TspTask.csproj",
-      "packagesPath": "C:\\Users\\Георгий\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Георгий\\source\\repos\\TspTask\\TspTask\\obj\\",
+      "projectPath": "C:\\Codding\\C#_something\\MaxTsp\\TspTask\\TspTask.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Codding\\C#_something\\MaxTsp\\TspTask\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Георгий\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3243,6 +3245,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -3288,7 +3295,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   },

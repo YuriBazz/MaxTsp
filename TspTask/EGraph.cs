@@ -20,7 +20,7 @@ public class EGraph
             _weights[i, j] = _weights[j,i] = GetDistance(_vertexes[i], _vertexes[j]);
         _max = _weights.Cast<double>().Prepend(double.MinValue).Max();
         
-        ChangeMatrix(); // Меняет задачу с максимума на минимум (наверное)
+        //ChangeMatrix(); // Меняет задачу с максимума на минимум (наверное)
     }
 
     private void ChangeMatrix()
