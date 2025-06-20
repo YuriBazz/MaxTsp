@@ -9,12 +9,14 @@
 
     <ItemGroup>
       <PackageReference Include="Google.OrTools.x86" Version="5.0.6170.24109" />
+      <PackageReference Include="Highs.Native" Version="1.11.0" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
       <PackageReference Include="NUnit" Version="4.3.2" />
       <PackageReference Include="NUnit.Analyzers" Version="4.8.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Nunit.Framework.TestCaseStorage" Version="1.0.1" />
       <PackageReference Include="NUnit3TestAdapter" Version="5.1.0-alpha.2" />
     </ItemGroup>
 

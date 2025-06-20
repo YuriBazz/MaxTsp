@@ -6,23 +6,21 @@ namespace TspTask;
 [TestFixture]
 public class AlgoTests
 {
-    [TestCase(@"C:\Codding\C#_something\MaxTsp\100.txt", 7910)]
-    [TestCase(@"C:\Codding\C#_something\MaxTsp\400.txt", 15281)]
-    public static void MainTest(string path, double optimal)
-    {
-        var list = new List<Point>();
-        using (StreamReader reader = File.OpenText(path))
-        {
-            while (reader.ReadLine() is { } str)
-            {
-                var p = str.Split(" ").Select(x => double.Parse(x, CultureInfo.InvariantCulture)).ToArray();
-                list.Add(new Point(p[0],p[1],p[2]));
-            }
-        }
+    private const string AbsolutePath = @"E:\tspData\";
 
-        var gr = new EGraph(list);
-        var result = Algo.GetMaxTsp(gr);
-        var cost = result.Select(x => x.Cost).Sum();
-        Console.WriteLine($"Кол-во точек: {list.Count} \n Оптималь: {optimal} \n Результат: {cost} \n Отношение: {cost} /{optimal} = {cost / optimal}");
+    [TestCase(10)]
+    [TestCase(50)]
+    [TestCase(100)]
+    [TestCase(500)]
+    [TestCase(1000)]
+    public static void MainTest(int count)
+    {
+        var name = $"Test_For_{count}";
+        var graph = new EGraph(Generator.Generate(count));
+        Parser.ParseGraph(graph, AbsolutePath + name + ".tsp", name);
+        var resultPathOfAlgo = Algo.GetMaxTsp(graph);
+        using StreamWriter writer = File.CreateText(AbsolutePath + name + "-resultOfAlgo.txt");
+        writer.WriteLine(resultPathOfAlgo.Select(edge => edge.Cost).Sum());
+        writer.WriteLine(graph.Max);
     }
 }

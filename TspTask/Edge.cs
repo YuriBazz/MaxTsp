@@ -22,7 +22,7 @@ public class Edge
     {
         _first = p1;
         _second = p2;
-        _cost = Point.GetDistance(p1, p2);
+        _cost = Point.GetDistance(p1,p2);
     }
 
     public override int GetHashCode()

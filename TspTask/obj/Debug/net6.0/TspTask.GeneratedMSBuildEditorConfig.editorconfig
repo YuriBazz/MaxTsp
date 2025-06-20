@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TspTask
-build_property.ProjectDir = C:\Codding\C#_something\MaxTsp\TspTask\
+build_property.ProjectDir = C:\Users\Георгий\source\repos\MaxTsp\TspTask\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

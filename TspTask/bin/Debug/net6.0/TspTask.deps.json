@@ -9,10 +9,12 @@
       "TspTask/1.0.0": {
         "dependencies": {
           "Google.OrTools.x86": "5.0.6170.24109",
+          "Highs.Native": "1.11.0",
           "Microsoft.NET.Test.Sdk": "17.14.0",
           "NUnit": "4.3.2",
           "NUnit.Analyzers": "4.8.0",
-          "NUnit3TestAdapter": "5.1.0-alpha.2"
+          "NUnit3TestAdapter": "5.1.0-alpha.2",
+          "Nunit.Framework.TestCaseStorage": "1.0.1"
         },
         "runtime": {
           "TspTask.dll": {}
@@ -50,6 +52,46 @@
           "lib/netstandard1.0/Google.Protobuf.dll": {
             "assemblyVersion": "3.0.0.0",
             "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "Highs.Native/1.11.0": {
+        "runtime": {
+          "lib/netstandard2.0/Highs.Native.dll": {
+            "assemblyVersion": "1.11.0.0",
+            "fileVersion": "1.11.0.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/highs.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/highs.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-arm64/native/highs.dylib": {
+            "rid": "osx-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/highs.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x32/native/highs.dll": {
+            "rid": "win-x32",
+            "assetType": "native",
+            "fileVersion": "1.11.0.0"
+          },
+          "runtimes/win-x64/native/highs.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.11.0.0"
           }
         }
       },
@@ -454,6 +496,17 @@
         }
       },
       "NUnit.Analyzers/4.8.0": {},
+      "Nunit.Framework.TestCaseStorage/1.0.1": {
+        "dependencies": {
+          "NUnit": "4.3.2"
+        },
+        "runtime": {
+          "lib/nunit.framework.testcasestorage.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "NUnit3TestAdapter/5.1.0-alpha.2": {
         "dependencies": {
           "Microsoft.Testing.Extensions.VSTestBridge": "1.7.0",
@@ -659,6 +712,13 @@
       "path": "google.protobuf/3.0.0",
       "hashPath": "google.protobuf.3.0.0.nupkg.sha512"
     },
+    "Highs.Native/1.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-szP28lze6FNj6bgBQXTruYCg5z0I8tsJ5U03FDBHUwRZqwWNfJcNdYwGD45ud1z8MlRu2P3iQy8D5FvfNizbmw==",
+      "path": "highs.native/1.11.0",
+      "hashPath": "highs.native.1.11.0.nupkg.sha512"
+    },
     "Microsoft.ApplicationInsights/2.23.0": {
       "type": "package",
       "serviceable": true,
@@ -756,6 +816,13 @@
       "sha512": "sha512-Drakg436nBH0UZr5CuMaZKQKYBwgDdgsfAq6NlTVI0bNnsgy+oS5z+EHyLYeTaBwCtSg7RrduJSsGJlCb0xS2Q==",
       "path": "nunit.analyzers/4.8.0",
       "hashPath": "nunit.analyzers.4.8.0.nupkg.sha512"
+    },
+    "Nunit.Framework.TestCaseStorage/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cor8GU/Zw6k85aLuH8REMGDaTJ2lxhi0ocsbz4gv6w/UVblXjENx8FMJHy6fNJTfhPcvB6ZBjPueDy3ZJJMUpg==",
+      "path": "nunit.framework.testcasestorage/1.0.1",
+      "hashPath": "nunit.framework.testcasestorage.1.0.1.nupkg.sha512"
     },
     "NUnit3TestAdapter/5.1.0-alpha.2": {
       "type": "package",

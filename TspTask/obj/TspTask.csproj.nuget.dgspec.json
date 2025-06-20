@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Codding\\C#_something\\MaxTsp\\TspTask\\TspTask.csproj": {}
+    "C:\\Users\\Георгий\\source\\repos\\MaxTsp\\TspTask\\TspTask.csproj": {}
   },
   "projects": {
-    "C:\\Codding\\C#_something\\MaxTsp\\TspTask\\TspTask.csproj": {
+    "C:\\Users\\Георгий\\source\\repos\\MaxTsp\\TspTask\\TspTask.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Codding\\C#_something\\MaxTsp\\TspTask\\TspTask.csproj",
+        "projectUniqueName": "C:\\Users\\Георгий\\source\\repos\\MaxTsp\\TspTask\\TspTask.csproj",
         "projectName": "TspTask",
-        "projectPath": "C:\\Codding\\C#_something\\MaxTsp\\TspTask\\TspTask.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Codding\\C#_something\\MaxTsp\\TspTask\\obj\\",
+        "projectPath": "C:\\Users\\Георгий\\source\\repos\\MaxTsp\\TspTask\\TspTask.csproj",
+        "packagesPath": "C:\\Users\\Георгий\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Георгий\\source\\repos\\MaxTsp\\TspTask\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Георгий\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,6 +47,10 @@
               "target": "Package",
               "version": "[5.0.6170.24109, )"
             },
+            "Highs.Native": {
+              "target": "Package",
+              "version": "[1.11.0, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.14.0, )"
@@ -66,6 +68,10 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[5.1.0-alpha.2, )"
+            },
+            "Nunit.Framework.TestCaseStorage": {
+              "target": "Package",
+              "version": "[1.0.1, )"
             }
           },
           "imports": [
@@ -79,12 +85,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.33, 6.0.33]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
