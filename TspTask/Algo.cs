@@ -2,6 +2,8 @@ namespace TspTask;
 
 public static class Algo
 {
+    
+    
     private static double GetAngel(Edge e1, Edge e2)
     {
         var first = (e1.Second.X - e1.First.X, e1.Second.Y - e1.First.Y);
@@ -24,37 +26,34 @@ public static class Algo
             temp = pairs[0];
             pairs.RemoveAt(0);
         }
-        var all = CreateOrder(pairs, gr.N, t);
+        var all = CreateOrder(pairs, gr.N, t, gr);
         return CreateResult(all, gr, temp);
     }
 
-    private static List<Edge> CreateOrder(List<Edge> pairs, int n, int t)
+    private static List<Edge> CreateOrder(List<Edge> pairs, int n, int t, EGraph gr)
     {
         var light = pairs.Take(t - 2).ToList();
         var heavy = pairs.Skip(t - 2).ToList();
 
         var hitches = heavy.Select(x => new Hitch(x)).ToList();
-        var j = n / 2 - 2 + t;
+        var j = n / 2 + 2 - t;
+        var currentAngle = 0.0;
         while (j > t-1)
         {
+            var temp = new List<(int i , int k , double an)>();
             for (var i = 0; i < hitches.Count; ++i)
-            {
-                var done = false;
-                for (var k = i + 1; k < hitches.Count; ++k)
-                {
-                    if (GetAngel(hitches[i].Last, hitches[k].First) > 1 - (2 * Math.PI * Math.PI / (t * t)))
-                    {
-                        done = true;
-                        hitches[i].Merge(hitches[k]);
-                        hitches.RemoveAt(k);
-                    }
-                    if(done) break;
-                }
-                if (done) break;
-            }
+                for(var k = i + 1; k < hitches.Count; ++k)
+                    temp.Add((i, k, Math.Acos(GetAngel(hitches[i].Last,hitches[k].First))));
+            temp.Sort((x,y) => x.Item3.CompareTo(y.Item3));
+            var res = temp[0];
+            hitches[res.i].Merge(hitches[res.k]);
+            hitches.RemoveAt(res.k);
+            currentAngle = res.an;
             j--;
         }
 
+        gr.Angle = currentAngle;
+        
         var all = new List<Edge>();
         var lInd = 0;
         foreach (var hitch in hitches)

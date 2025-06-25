@@ -8,6 +8,7 @@ public class EGraph
     private readonly Point[] _vertexes;
     private readonly double _max;
 
+    public double Angle { get; set; }
     public double Max => _max;
     public int N => _weights.GetLength(0);
     public double[,] Weights => _weights;

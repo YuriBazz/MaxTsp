@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TspTask")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+832e9d72154ee073fd17dab34fd2c1629188d278")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ef6014a9de3233dbef74f1ac6cfed6e64827f34")]
 [assembly: System.Reflection.AssemblyProductAttribute("TspTask")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TspTask")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
